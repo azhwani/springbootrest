@@ -30,17 +30,17 @@ public class SpringBootApplicationTestServicesV1 {
 	@Before
     public void init() {
 		Employee emp01 = new Employee();
-		emp01.setEmail("abc@gmail.com");
+		emp01.setEmail("samantha@gmail.com");
 		Optional<Employee> emp = Optional.of(emp01);
-		Mockito.when(emprep.findByName("Gupta")).thenReturn(emp);
+		Mockito.when(emprep.findByName("Samantha")).thenReturn(emp);
     }
 	
 	
 	@Test
 	public void testService() {
 		
-		Optional<Employee> emp2 = empservice.findByName("Gupta");
-		assertThat(emp2.get().getEmail(), equalTo("abc@gmail.com"));
+		Optional<Employee> emp2 = empservice.findByName("Samantha");
+		assertThat(emp2.get().getEmail(), equalTo("samantha@gmail.com"));
 		
 	}
 

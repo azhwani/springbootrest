@@ -27,10 +27,10 @@ public class SpringbootrestApplicationTests {
 	
 	@Test
 	public void testDAORepo() {
-		Optional<Employee> emp = emprep.findByName("Gupta");
+		Optional<Employee> emp = emprep.findByName("Samantha");
 		assertTrue(emp.get() instanceof Employee);
 		assertThat(emp.get(), instanceOf(Employee.class));
-		assertThat(emp.get().getEmail(), equalTo("abc@gmail.com"));
+		assertThat(emp.get().getEmail(), equalTo("samantha@gmail.com"));
 	}
 
 	

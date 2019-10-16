@@ -41,8 +41,8 @@ public class SpringBootApplicationTestServicesV2 {
     public void init() {
        
 		Employee emp01 = new Employee();
-		emp01.setName("Vu");
-		emp01.setEmail("abc@gmail.com");
+		emp01.setName("Samantha");
+		emp01.setEmail("samantha@gmail.com");
 		Optional<Employee> emp = Optional.of(emp01);
 
 	    Mockito.when(emprep.findByName(emp01.getName())).thenReturn(emp);
@@ -52,8 +52,8 @@ public class SpringBootApplicationTestServicesV2 {
 	@Test
 	public void testService() {
 		
-		Optional<Employee> emp = empservice.findByName("Vu");
-		assertThat(emp.get().getEmail(), equalTo("abc@gmail.com"));
+		Optional<Employee> emp = empservice.findByName("Samantha");
+		assertThat(emp.get().getEmail(), equalTo("samantha@gmail.com"));
 		
 	}
 	
