@@ -8,8 +8,10 @@ import org.springframework.stereotype.Repository;
 import com.project.az.springbootrest.models.Employee;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	
 	Optional<Employee> findByName(String name);
+	
+	Optional<Employee> getEmployeeByEmail(String email);
 
 }
