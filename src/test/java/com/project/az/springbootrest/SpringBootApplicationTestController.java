@@ -34,7 +34,7 @@ public class SpringBootApplicationTestController {
     public void init() {
        
 		Employee emp01 = new Employee();
-		emp01.setName("Samantha");
+		emp01.setName("samantha");
 		emp01.setEmail("samantha@gmail.com");
 		Optional<Employee> emp = Optional.of(emp01);
 
@@ -46,7 +46,7 @@ public class SpringBootApplicationTestController {
 	public void TestEmployeeOK()
 	  throws Exception {
 
-	    mvc.perform(get("/api/employee/samantha").contentType(MediaType.APPLICATION_JSON))
+	    mvc.perform(get("/api/employeebyname/samantha").contentType(MediaType.APPLICATION_JSON))
 	       .andExpect(status().isOk())
 	       .andExpect(jsonPath("$.email").value("samantha@gmail.com"));
 	}
@@ -56,13 +56,13 @@ public class SpringBootApplicationTestController {
 	  throws Exception {
 	     
 		Employee emp01 = new Employee();
-		emp01.setName("Samantha");
+		emp01.setName("ssamantha");
 		emp01.setEmail("samantha@gmail.com");
 		Optional<Employee> emp = Optional.of(emp01);
 
 	    Mockito.when(empservice.findByName(emp01.getName())).thenReturn(emp);
 	 
-	    mvc.perform(get("/api/employee/samantha").contentType(MediaType.APPLICATION_JSON))
+	    mvc.perform(get("/api/employeebyname/sSamantha").contentType(MediaType.APPLICATION_JSON))
 	       .andExpect(status().isNotFound());
 	}
 	
