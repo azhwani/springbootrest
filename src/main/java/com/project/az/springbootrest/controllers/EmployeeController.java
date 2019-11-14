@@ -37,11 +37,12 @@ public class EmployeeController {
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable int id){
 		
 		/*Optional<Employee> emp = empservice.findById(id);
-		if(emp.isPresent()){
-			return new ResponseEntity<Employee>(emp.get(), HttpStatus.OK);
+		if(!emp.isPresent()){
+		    throw new ResouceNotFoundException("Employee not found on :: " + id);
+			//return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
 		}
 		
-		return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Employee>(emp.get(), HttpStatus.OK);
 		*/
 		
 		Employee emp = empservice.findById(id)
@@ -53,12 +54,14 @@ public class EmployeeController {
 	@RequestMapping(value="/employeebyname/{name}", method=RequestMethod.GET)
 	public ResponseEntity<Employee> getEmployeeByName(@PathVariable String name){
 		
-		/*Optional<Employee> emp = empservice.findByName(name);
-		if(emp.isPresent()){
-			return new ResponseEntity<Employee>(emp.get(), HttpStatus.OK);
+		/*
+		 * Optional<Employee> emp = empservice.findByName(name);
+		if(!emp.isPresent()){
+		    throw new ResouceNotFoundException("Employee not found on :: " + name));
+			//return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
 		}
-		
-		return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);*/
+		return new ResponseEntity<Employee>(emp.get(), HttpStatus.OK);
+		*/
 		
 		Employee emp = empservice.findByName(name)
 				                 .orElseThrow( () -> new ResouceNotFoundException("Employee not found on :: " + name));
@@ -70,12 +73,15 @@ public class EmployeeController {
 	@RequestMapping(value="/employeebyemail/{email}", method=RequestMethod.GET)
 	public ResponseEntity<Employee> getEmployeeByEmail(@PathVariable String email){
 		
-		/*Optional<Employee> emp = empservice.getEmployeeByEmail(email);
-		if(emp.isPresent()){
-			return new ResponseEntity<Employee>(emp.get(), HttpStatus.OK);
+		/*
+		 * Optional<Employee> emp = empservice.getEmployeeByEmail(email);
+		if(!emp.isPresent()){
+			throw new ResouceNotFoundException("Employee not found on :: " + email));
+			//return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
 		}
 		
-		return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);*/
+		return new ResponseEntity<Employee>(emp.get(), HttpStatus.OK);
+		*/
 		
 		Employee emp = empservice.findByName(email)
                 .orElseThrow( () -> new ResouceNotFoundException("Employee not found on :: " + email));
@@ -93,11 +99,12 @@ public class EmployeeController {
 	public ResponseEntity<Employee> updateEmployee(@PathVariable int id, @RequestBody Employee emp){
 		/*
 		 * Optional<Employee> gemp = empservice.findById(id);
-		if(gemp.isPresent()){
-			return new ResponseEntity<Employee>(empservice.save(emp), HttpStatus.OK);
+		if(!gemp.isPresent()){
+			new ResouceNotFoundException("Employee not found on :: " + id)
+			//return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND); 
+			
 		}
-		
-		return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND); 
+		return new ResponseEntity<Employee>(empservice.save(emp), HttpStatus.OK);
 		*/
 		
 		Employee pemp = empservice.findById(id)
@@ -111,12 +118,14 @@ public class EmployeeController {
 	@RequestMapping(value="/employee/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Employee> deleteEmployee(@PathVariable int id){
 		/*Optional<Employee> gemp = empservice.findById(id);
-		if(gemp.isPresent()){
-			empservice.delete(id);
-			return new ResponseEntity<Employee>(HttpStatus.OK);
+		if(!gemp.isPresent()){
+			new ResouceNotFoundException("Employee not found on :: " + id)
+			//return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
 		}
 		
-		return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
+		empservice.delete(id);
+		return new ResponseEntity<Employee>(HttpStatus.OK);
+		
 		*/
 		
 		Employee pemp = empservice.findById(id)
