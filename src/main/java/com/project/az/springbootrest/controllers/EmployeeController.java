@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.az.springbootrest.configuration.ApplicationPropertiesConfiguration;
 import com.project.az.springbootrest.exceptions.ResouceNotFoundException;
 import com.project.az.springbootrest.models.Employee;
 import com.project.az.springbootrest.services.IEmployeeService;
@@ -21,6 +22,9 @@ public class EmployeeController {
 	
 	@Autowired
 	private IEmployeeService empservice;
+	
+	@Autowired
+	private ApplicationPropertiesConfiguration gappconfig;
 
 	public EmployeeController() {
 		// TODO Auto-generated constructor stub
@@ -28,6 +32,8 @@ public class EmployeeController {
 	
 	@RequestMapping(value="/employees", method=RequestMethod.GET)
 	public List<Employee> getAll(){
+		
+		System.out.println(gappconfig.getMaxemployees());
 		
 		List<Employee> emps = empservice.getAllEmployees();
 		return emps;
