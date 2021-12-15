@@ -9,7 +9,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 public class SpringbootrestApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringbootrestApplication.class, args);
+    SpringApplication.run(SpringbootrestApplication.class, args);
 	}
 
 }

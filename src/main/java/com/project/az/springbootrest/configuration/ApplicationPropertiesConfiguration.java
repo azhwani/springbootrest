@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 public class ApplicationPropertiesConfiguration {
 	
 	private int maxemployees;
+	
+	
 
 	public int getMaxemployees() {
 		return maxemployees;
